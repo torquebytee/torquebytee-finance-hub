@@ -134,7 +134,15 @@ filtered.forEach(calc=>{
 
 calculatorGrid.innerHTML+=`
 
-<div class="calculator-card">
+<div class="calculator-card"
+
+${calc.title==="EMI Calculator"
+
+? 'onclick="window.location.href=\'calculators/emi/index.html\'"'
+
+: ""}
+
+>
 
 <div class="card-category">
 
@@ -163,7 +171,6 @@ ${calc.description}
 <div class="card-footer">
 
 <span class="card-status">
-
 ${calc.title==="EMI Calculator"
 
 ? "Open Calculator"
