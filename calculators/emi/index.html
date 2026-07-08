@@ -93,7 +93,43 @@ Instant EMI, interest and repayment calculator.
         Enter your loan information to calculate your EMI instantly.
 
     </p>
+<!-- Currency -->
 
+<div class="input-group">
+
+    <label>
+
+        Currency
+
+    </label>
+
+    <div class="input-wrapper">
+
+        <select id="currencySelect">
+
+            <option value="INR">₹ INR</option>
+
+            <option value="USD">$ USD</option>
+
+            <option value="EUR">€ EUR</option>
+
+            <option value="GBP">£ GBP</option>
+
+            <option value="CAD">C$ CAD</option>
+
+            <option value="AUD">A$ AUD</option>
+
+            <option value="SGD">S$ SGD</option>
+
+            <option value="AED">AED</option>
+
+            <option value="JPY">¥ JPY</option>
+
+        </select>
+
+    </div>
+
+</div>
     <!-- Loan Amount -->
 
     <div class="input-group">
@@ -106,12 +142,12 @@ Instant EMI, interest and repayment calculator.
 
         <div class="input-wrapper">
 
-            <span>₹</span>
+            <span class="input-prefix">•</span>
 
             <input
                 type="number"
                 id="loanAmount"
-                placeholder="1000000">
+                placeholder="100000">
 
         </div>
 
@@ -129,7 +165,7 @@ Instant EMI, interest and repayment calculator.
 
         <div class="input-wrapper">
 
-            <span>₹</span>
+            <span class="input-prefix">•</span>
 
             <input
                 type="number"
@@ -227,21 +263,18 @@ Instant EMI, interest and repayment calculator.
 
     <div class="button-group">
 
-        <button
-            class="secondary-btn"
-            id="resetBtn">
+        <button id="resetBtn" class="secondary-btn">
 
-            Reset
+    <i class="fa-solid fa-rotate-left"></i>
 
-        </button>
+    Reset
 
-        <button
-            class="primary-btn"
-            id="calculateBtn">
+</button>
 
-            Calculate EMI
-
-        </button>
+       <button id="printBtn" class="primary-btn">
+    <i class="fa-solid fa-file-pdf"></i>
+    Export Report
+</button>
 
     </div>
 
@@ -364,11 +397,94 @@ Instant EMI, interest and repayment calculator.
 </div>
 
 </div>
+<div class="schedule-panel">
 
+    <h2 class="panel-title">
+
+        Amortization Schedule
+
+    </h2>
+
+    <p class="panel-subtitle">
+
+        View how every monthly payment is split between principal and interest.
+
+    </p>
+
+    <div class="table-container">
+
+        <table id="amortizationTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Month</th>
+
+                    <th>EMI</th>
+
+                    <th>Principal</th>
+
+                    <th>Interest</th>
+
+                    <th>Balance</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
 </section>
+<footer class="tb-footer">
 
+    <div class="tb-footer-content">
+
+        <h3><span>TorqueBytee</span> Finance Hub</h3>
+
+        <p>
+
+            Professional financial calculators designed for quick, accurate estimates.
+
+        </p>
+
+        <div class="tb-footer-links">
+
+            <a href="#">Privacy Policy</a>
+
+            <a href="#">Terms</a>
+
+            <a href="#">Disclaimer</a>
+
+            <a href="#">Contact</a>
+
+        </div>
+
+        <p class="tb-disclaimer">
+
+            <strong>Disclaimer:</strong> These calculators are provided for informational and estimation purposes only. While we strive for accuracy, results may vary depending on lender policies, regional regulations, and rounding methods. TorqueBytee or its developers are not liable for financial decisions made using these estimates.
+
+        </p>
+
+        <p class="tb-copyright">
+
+            © 2026<span>TorqueBytee</span>. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="script.js"></script>
 
 </body>

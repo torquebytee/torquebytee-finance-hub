@@ -469,4 +469,294 @@ TENURE SELECT
 
     color:white;
 
+}/*==========================================
+AMORTIZATION
+==========================================*/
+
+.schedule-panel{
+
+    margin-top:40px;
+
+    grid-column:1/-1;
+
+    background:var(--card-bg);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+}
+
+.table-container{
+
+    overflow-x:auto;
+
+    margin-top:20px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:900px;
+
+}
+
+thead{
+
+    position:sticky;
+
+    top:0;
+
+    background:#111827;
+
+}
+
+th{
+
+    padding:18px;
+
+    text-align:left;
+
+    color:var(--secondary);
+
+    font-weight:700;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+td{
+
+    padding:16px 18px;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    color:var(--text-light);
+
+}
+
+tbody tr{
+
+    transition:.25s;
+
+}
+
+tbody tr:hover{
+
+    background:rgba(124,92,255,.05);
+
+}
+#currencySelect{
+
+width:100%;
+
+background:transparent;
+
+border:none;
+
+outline:none;
+
+color:white;
+
+font-size:1rem;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+/*====================================
+PRINT MODE
+====================================*/
+
+@media print {
+
+    body {
+        background: #ffffff;
+        color: #000000;
+    }
+
+    header,
+    nav,
+    .hero,
+    .calculator-grid,
+    .search-bar,
+    .search-section,
+    .footer-links,
+    .primary-btn,
+    button {
+        display: none !important;
+    }
+
+    .calculator-container,
+    .calculator-card,
+    .results-card,
+    .amortization-table,
+    .insight-card {
+
+        display: block !important;
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        box-shadow: none !important;
+
+        border: none !important;
+
+        background: white !important;
+
+        color: black !important;
+
+    }
+
+    canvas{
+
+        max-width:500px !important;
+
+        margin:auto;
+
+        display:block;
+
+    }
+
+    table{
+
+        width:100%;
+
+        border-collapse:collapse;
+
+    }
+
+    th,
+    td{
+
+        border:1px solid #ccc;
+
+        padding:8px;
+
+    }
+
+}
+.secondary-btn{
+
+    background:transparent;
+
+    color:var(--primary);
+
+    border:2px solid var(--primary);
+
+    transition:.3s;
+
+}
+
+.secondary-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+/*====================================
+FOOTER
+====================================*/
+
+.tb-footer{
+
+    margin-top:80px;
+
+    padding:50px 20px;
+
+    background:#0b0f19;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.tb-footer-content{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.tb-footer h3{
+
+    color:#ffffff;
+
+    font-size:1.7rem;
+
+    margin-bottom:12px;
+
+}
+
+.tb-footer h3 span{
+
+    color:var(--primary);
+
+}
+
+.tb-footer p{
+
+    color:#aeb4c3;
+
+    line-height:1.8;
+
+}
+
+.tb-footer-links{
+
+    margin:28px 0;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:22px;
+
+}
+
+.tb-footer-links a{
+
+    color:#22D3EE;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.tb-footer-links a:hover{
+
+    color:var(--primary);
+
+}
+
+.tb-disclaimer{
+
+    font-size:.9rem;
+
+    margin-top:25px;
+
+}
+
+.tb-copyright{
+
+    margin-top:30px;
+
+    font-size:.85rem;
+
+    opacity:.75;
+
 }
