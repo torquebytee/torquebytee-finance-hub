@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Investment Calculator | TorqueBytee Finance Hub
+
+</title>
+
+
+
+<link
+rel="stylesheet"
+href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="page-bg"></div>
+
+<div class="noise"></div>
+
+<header class="calculator-header">
+
+<div class="container">
+
+<a
+href="../../index.html"
+class="back-btn">
+
+← Back to Finance Hub
+
+</a>
+
+<div class="calculator-title">
+
+<span>
+
+SIP & Lumpsum Calculator - Powered by TORQUEBYTEE
+
+</span>
+
+<h1>
+
+Investment Calculator
+
+</h1>
+
+<p>
+
+Not just your average calculator, But a planning tool kit for your future
+
+</p>
+
+</div>
+
+</div>
+
+</header>
+
+<main>
+
+<section class="calculator-container">
+
+    <!-- LEFT PANEL -->
+
+    <div class="calculator-card">
+
+        <h2>Investment Details</h2>
+
+        <p class="card-subtitle">
+
+            Calculate SIP, Lumpsum and compare investment strategies.
+
+        </p>
+
+        <!-- Investment Type -->
+
+        <div class="input-group">
+
+            <label>Investment Type</label>
+
+            <div class="investment-tabs">
+
+                <button type="button" class="tab-btn active" data-type="sip">SIP</button>
+
+                <button type="button" class="tab-btn" data-type="lumpsum">Lumpsum</button>
+
+                <button type="button" class="tab-btn" data-type="compare">Compare</button>
+
+            </div>
+
+        </div>
+
+        <!-- Currency -->
+
+        <div class="input-group">
+
+            <label>Currency</label>
+
+            <select id="currency">
+
+                <option value="USD">$ USD</option>
+
+                <option value="EUR">€ EUR</option>
+
+                <option value="GBP">£ GBP</option>
+
+                <option value="INR" selected>₹ INR</option>
+
+                <option value="JPY">¥ JPY</option>
+
+                <option value="AUD">$ AUD</option>
+
+                <option value="CAD">$ CAD</option>
+
+                <option value="SGD">$ SGD</option>
+
+            </select>
+
+        </div>
+
+        <!-- SIP INPUT -->
+
+        <div id="sipInputs">
+
+            <div class="input-group">
+
+                <label>Monthly Investment</label>
+
+                <input
+                    id="sipAmount"
+                    type="number"
+                    placeholder="500">
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Step-Up (%)</label>
+
+                <input
+                    id="stepUp"
+                    type="number"
+                    value="0">
+
+            </div>
+
+        </div>
+
+        <!-- LUMPSUM INPUT -->
+
+        <div
+            id="lumpsumInputs"
+            style="display:none;">
+
+            <div class="input-group">
+
+                <label>Lumpsum Amount</label>
+
+                <input
+                    id="lumpAmount"
+                    type="number"
+                    placeholder="10000">
+
+            </div>
+
+        </div>
+
+        <!-- SHARED -->
+
+        <div class="input-group">
+
+            <label>Expected Annual Return (%)</label>
+
+            <input
+                id="returnRate"
+                type="number"
+                value="12">
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Investment Period (Years)</label>
+
+            <input
+                id="years"
+                type="number"
+                value="20">
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Inflation (%)</label>
+
+            <input
+                id="inflation"
+                type="number"
+                value="4">
+
+        </div>
+
+        <div class="action-buttons">
+
+            <button type="button" id="calculateBtn">
+
+                Calculate
+
+            </button>
+
+            <button type="button" id="exportBtn">
+
+                Export Report
+
+            </button>
+
+            <button
+type="button"
+id="resetBtn">
+
+                Reset
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+
+    <div class="calculator-card">
+
+        <h2>Investment Summary</h2>
+
+        <p class="card-subtitle">
+
+            Results update instantly based on your investment strategy.
+
+        </p>
+
+        <div class="result-grid">
+
+            <div class="result-box">
+
+                <span>Total Invested</span>
+
+                <h3 id="investedResult">--</h3>
+
+            </div>
+
+            <div class="result-box">
+
+                <span>Estimated Wealth</span>
+
+                <h3 id="wealthResult">--</h3>
+
+            </div>
+
+            <div class="result-box">
+
+                <span>Total Profit</span>
+
+                <h3 id="profitResult">--</h3>
+
+            </div>
+
+            <div class="result-box">
+
+                <span>Today's Value</span>
+
+                <h3 id="inflationResult">--</h3>
+
+            </div>
+
+        </div>
+
+        <div class="insight-card">
+
+            <h4>
+
+                💡 Torquebytee Insight
+
+            </h4>
+
+            <p id="insight">
+
+                Enter your investment details to receive personalized insights.
+
+            </p>
+
+        </div>
+
+        <div class="chart-card">
+
+            <canvas id="investmentChart"></canvas>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- YEARWISE TABLE -->
+
+<section class="table-section">
+
+    <div class="calculator-card">
+
+        <h2>Year-wise Growth</h2>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Year</th>
+
+                        <th>SIP Value</th>
+
+<th>Lumpsum Value</th>
+
+<th>Difference</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="growthTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+<footer class="tb-footer">
+
+    <div class="tb-footer-content">
+
+        <h3><span>TorqueBytee</span> Finance Hub</h3>
+
+        <p>
+
+            Professional financial calculators designed for quick, accurate estimates.
+
+        </p>
+
+        <div class="tb-footer-links">
+
+            <a href="#">Privacy Policy</a>
+
+            <a href="#">Terms</a>
+
+            <a href="#">Disclaimer</a>
+
+            <a href="#">Contact</a>
+
+        </div>
+
+        <p class="tb-disclaimer">
+
+            <strong>Disclaimer:</strong> These calculators are provided for informational and estimation purposes only. While we strive for accuracy, results may vary depending on lender policies, regional regulations, and rounding methods. TorqueBytee or its developers are not liable for financial decisions made using these estimates.
+
+        </p>
+
+        <p class="tb-copyright">
+
+            © 2026<span>TorqueBytee</span>. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>

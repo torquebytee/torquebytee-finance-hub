@@ -54,11 +54,11 @@ const calculators = [
 },
 
 {
-    title:"SIP Calculator",
+    title:"Investment Calculator",
     category:"investment",
-    badge:"📈 Popular",
+    badge:"⭐ Flagship",
     icon:"📈",
-    description:"Estimate wealth from monthly investments."
+    description:"SIP • Lumpsum • Compare • Step-Up • Inflation planning."
 },
 
 {
@@ -132,13 +132,23 @@ return categoryMatch && searchMatch;
 
 filtered.forEach(calc=>{
 
+const calculatorLinks={
+
+"EMI Calculator":"calculators/emi/index.html",
+
+"SIP Calculator":"calculators/investment/index.html"
+
+};
+
+const hasCalculator=calculatorLinks[calc.title];
+
 calculatorGrid.innerHTML+=`
 
 <div class="calculator-card"
 
-${calc.title==="EMI Calculator"
+${hasCalculator
 
-? 'onclick="window.location.href=\'calculators/emi/index.html\'"'
+? `onclick="window.location.href='${calculatorLinks[calc.title]}'"`
 
 : ""}
 
@@ -171,7 +181,8 @@ ${calc.description}
 <div class="card-footer">
 
 <span class="card-status">
-${calc.title==="EMI Calculator"
+
+${hasCalculator
 
 ? "Open Calculator"
 
@@ -181,7 +192,7 @@ ${calc.title==="EMI Calculator"
 
 <div class="card-arrow">
 
-${calc.title==="EMI Calculator"
+${hasCalculator
 
 ? "↗"
 
@@ -196,8 +207,6 @@ ${calc.title==="EMI Calculator"
 `;
 
 });
-
-}
 
 /*-------------------------------------*/
 
@@ -257,5 +266,5 @@ if(heroSearch){
         );
 
     });
-
+}
 }
