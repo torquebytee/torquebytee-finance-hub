@@ -58,7 +58,7 @@ const calculators = [
     category:"investment",
     badge:"⭐ Flagship",
     icon:"📈",
-    description:"SIP • Lumpsum • Compare • Step-Up • Inflation planning."
+    description:"SIP • Lumpsum • Compare • Step-Up • Inflation Planner."
 },
 
 {
@@ -111,102 +111,96 @@ const filterButtons=document.querySelectorAll(".filter-btn");
 
 function renderCalculators(filter="all",search=""){
 
-calculatorGrid.innerHTML="";
+    calculatorGrid.innerHTML="";
 
-const filtered=calculators.filter(calc=>{
+    const filtered=calculators.filter(calc=>{
 
-const categoryMatch=
-filter==="all" || calc.category===filter;
+        const categoryMatch=
+        filter==="all" || calc.category===filter;
 
-const query = search.toLowerCase();
+        const query=search.toLowerCase();
 
-const searchMatch =
+        const searchMatch=
 
-calc.title.toLowerCase().includes(query) ||
+        calc.title.toLowerCase().includes(query) ||
 
-calc.description.toLowerCase().includes(query);
+        calc.description.toLowerCase().includes(query);
 
-return categoryMatch && searchMatch;
+        return categoryMatch && searchMatch;
 
-});
+    });
 
-filtered.forEach(calc=>{
+    filtered.forEach(calc=>{
 
-const calculatorLinks={
+        let link="";
 
-"EMI Calculator":"calculators/emi/index.html",
+        if(calc.title==="EMI Calculator"){
 
-"SIP Calculator":"calculators/investment/index.html"
+            link="calculators/emi/index.html";
 
-};
+        }
 
-const hasCalculator=calculatorLinks[calc.title];
+        else if(calc.title==="Investment Calculator"){
 
-calculatorGrid.innerHTML+=`
+            link="calculators/investment/index.html";
 
-<div class="calculator-card"
+        }
 
-${hasCalculator
+        calculatorGrid.innerHTML+=`
 
-? `onclick="window.location.href='${calculatorLinks[calc.title]}'"`
+        <div class="calculator-card"
 
-: ""}
+        ${link ? `onclick="window.location.href='${link}'"` : ""}
 
->
+        >
 
-<div class="card-category">
+            <div class="card-category">
 
-${calc.badge}
+                ${calc.badge}
 
-</div>
+            </div>
 
-<div class="card-icon">
+            <div class="card-icon">
 
-${calc.icon}
+                ${calc.icon}
 
-</div>
+            </div>
 
-<h3>
+            <h3>
 
-${calc.title}
+                ${calc.title}
 
-</h3>
+            </h3>
 
-<p>
+            <p>
 
-${calc.description}
+                ${calc.description}
 
-</p>
+            </p>
 
-<div class="card-footer">
+            <div class="card-footer">
 
-<span class="card-status">
+                <span class="card-status">
 
-${hasCalculator
+                    ${link ? "Open Calculator" : "Coming Soon"}
 
-? "Open Calculator"
+                </span>
 
-: "Coming Soon"}
+                <div class="card-arrow">
 
-</span>
+                    ${link ? "↗" : "→"}
 
-<div class="card-arrow">
+                </div>
 
-${hasCalculator
+            </div>
 
-? "↗"
+        </div>
 
-: "→"}
+        `;
 
-</div>
+    });
 
-</div>
-
-</div>
-
-`;
-
-});
+}
 
 /*-------------------------------------*/
 
@@ -266,5 +260,5 @@ if(heroSearch){
         );
 
     });
-}
+
 }
