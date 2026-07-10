@@ -275,19 +275,56 @@ duration:900
    RESET BUTTON
 ============================================ */
 
-document.getElementById("resetBtn").addEventListener("click",()=>{
+document.getElementById("resetBtn").addEventListener("click", () => {
 
-document.getElementById("principal").value=100000;
+document.getElementById("principal").value = "";
 
-document.getElementById("rate").value=7;
+document.getElementById("rate").value = "";
 
-document.getElementById("years").value=5;
+document.getElementById("years").value = "";
 
-document.getElementById("inflation").value=5;
+document.getElementById("inflation").value = "";
 
-document.getElementById("compound").value=4;
+document.getElementById("compound").selectedIndex = 2;
 
-calculateFD();
+document.getElementById("currency").selectedIndex = 0;
+
+/* Clear Results */
+
+document.getElementById("depositResult").textContent = "—";
+
+document.getElementById("interestResult").textContent = "—";
+
+document.getElementById("maturityResult").textContent = "—";
+
+document.getElementById("inflationResult").textContent = "—";
+
+document.getElementById("yieldResult").textContent = "—";
+
+document.getElementById("comparisonResult").textContent = "—";
+
+document.getElementById("tableFD").textContent = "—";
+
+document.getElementById("tableSavings").textContent = "—";
+
+document.getElementById("tableInterest").textContent = "—";
+
+document.getElementById("tableSavingsInterest").textContent = "—";
+
+document.getElementById("tableReal").textContent = "—";
+
+document.getElementById("insightText").textContent =
+"Enter your investment details and click Calculate.";
+
+/* Remove Chart */
+
+if(fdChart){
+
+fdChart.destroy();
+
+fdChart = null;
+
+}
 
 });
 
