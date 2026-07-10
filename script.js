@@ -62,11 +62,11 @@ const calculators = [
 },
 
 {
-    title:"FD Calculator",
-    category:"investment",
-    badge:"💰 Essential",
-    icon:"💰",
-    description:"Calculate maturity value using compound interest."
+title:"FD Calculator",
+category:"investment",
+badge:"⭐ New",
+icon:"🏦",
+description:"Fixed Deposit maturity, inflation analysis and savings comparison."
 },
 
 {
@@ -145,6 +145,12 @@ function renderCalculators(filter="all",search=""){
             link="calculators/investment/index.html";
 
         }
+
+        else if(calc.title==="FD Calculator"){
+
+link="calculators/fd/index.html";
+
+}
 
         calculatorGrid.innerHTML+=`
 

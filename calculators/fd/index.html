@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FD Calculator (Fixed Deposit Calculator) | TorqueBytee Finance Hub</title>
+
+<meta name="description"
+content="Free FD Calculator by TorqueBytee. Calculate Fixed Deposit maturity amount, interest earned, inflation-adjusted returns, effective annual yield and compare savings instantly.">
+
+<meta name="keywords"
+content="FD Calculator, Fixed Deposit Calculator, Maturity Calculator, Interest Calculator, Compound Interest, Finance Hub">
+
+<meta property="og:title" content="TorqueBytee FD Calculator">
+
+<meta property="og:description"
+content="Professional Fixed Deposit Calculator with inflation-adjusted returns and investment insights.">
+
+<meta property="og:type"
+content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="calculator-header">
+
+<a href="../../index.html" class="back-btn">
+
+← Back to Finance Hub
+
+</a>
+
+<div class="calculator-title">
+
+<span>
+FD Calculator • Powered by TORQUEBYTEE
+</span>
+
+<h1>
+Fixed Deposit Calculator
+</h1>
+
+<p>
+
+Plan your fixed deposit smarter with maturity estimation,
+inflation-adjusted returns,
+effective annual yield,
+and intelligent investment insights.
+
+</p>
+
+</div>
+
+</header>
+
+<!-- ================= MAIN ================= -->
+
+<div class="calculator-container">
+
+<!-- ================================= -->
+<!-- LEFT CARD -->
+<!-- ================================= -->
+
+<div class="calculator-card">
+
+<h2>
+
+FD Calculator
+
+</h2>
+
+<p class="card-subtitle">
+
+Calculate maturity value,
+interest earned,
+real purchasing power,
+and compare FD performance instantly.
+
+</p>
+<!-- Currency -->
+
+<div class="input-group">
+
+<label>
+
+Currency
+
+</label>
+
+<select id="currency">
+
+<option value="₹" selected>🇮🇳 INR (₹)</option>
+
+<option value="$">🇺🇸 USD ($)</option>
+
+<option value="€">🇪🇺 EUR (€)</option>
+
+<option value="£">🇬🇧 GBP (£)</option>
+
+<option value="¥">🇯🇵 JPY (¥)</option>
+
+<option value="A$">🇦🇺 AUD (A$)</option>
+
+<option value="C$">🇨🇦 CAD (C$)</option>
+
+<option value="CHF">🇨🇭 CHF</option>
+
+<option value="SG$">🇸🇬 SGD</option>
+
+<option value="AED">🇦🇪 AED</option>
+
+</select>
+
+</div>
+<!-- Principal -->
+
+<div class="input-group">
+
+<label>
+
+Deposit Amount (₹)
+
+</label>
+
+<input
+type="number"
+id="principal"
+value="100000"
+min="1000">
+
+</div>
+
+<!-- Interest -->
+
+<div class="input-group">
+
+<label>
+
+Annual Interest Rate (%)
+
+</label>
+
+<input
+type="number"
+id="rate"
+value="7"
+step="0.1">
+
+</div>
+
+<!-- Years -->
+
+<div class="input-group">
+
+<label>
+
+Investment Period (Years)
+
+</label>
+
+<input
+type="number"
+id="years"
+value="5">
+
+</div>
+
+<!-- Compound -->
+
+<div class="input-group">
+
+<label>
+
+Compounding Frequency
+
+</label>
+
+<select id="compound">
+
+<option value="1">
+
+Yearly
+
+</option>
+
+<option value="2">
+
+Half-Yearly
+
+</option>
+
+<option value="4" selected>
+
+Quarterly
+
+</option>
+
+<option value="12">
+
+Monthly
+
+</option>
+
+</select>
+
+</div>
+
+<!-- Inflation -->
+
+<div class="input-group">
+
+<label>
+
+Expected Inflation (%)
+
+</label>
+
+<input
+type="number"
+id="inflation"
+value="5">
+
+</div>
+
+<div class="action-buttons">
+
+<button
+type="button"
+id="calculateBtn">
+
+Calculate
+
+</button>
+
+<button
+type="button"
+id="exportBtn">
+
+Export Report
+
+</button>
+
+<button
+type="button"
+class="secondary-btn"
+id="resetBtn">
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================================= -->
+<!-- RIGHT CARD -->
+<!-- ================================= -->
+
+<div class="calculator-card">
+
+<div class="result-grid">
+
+<div class="result-box">
+
+<span>
+
+Deposit Amount
+
+</span>
+
+<h3 id="depositResult">
+
+₹0
+
+</h3>
+
+</div>
+
+<div class="result-box">
+
+<span>
+
+Interest Earned
+
+</span>
+
+<h3 id="interestResult">
+
+₹0
+
+</h3>
+
+</div>
+
+<div class="result-box">
+
+<span>
+
+Maturity Value
+
+</span>
+
+<h3 id="maturityResult">
+
+₹0
+
+</h3>
+
+</div>
+
+<div class="result-box">
+
+<span>
+
+Real Value
+
+</span>
+
+<h3 id="inflationResult">
+
+₹0
+
+</h3>
+
+</div>
+
+<div class="result-box">
+
+<span>
+
+Effective Yield
+
+</span>
+
+<h3 id="yieldResult">
+
+0%
+
+</h3>
+
+</div>
+
+<div class="result-box">
+
+<span>
+
+Savings Difference
+
+</span>
+
+<h3 id="comparisonResult">
+
+₹0
+
+</h3>
+
+</div>
+
+</div>
+
+<div class="insight-card">
+
+<h4>
+
+💡 TorqueBytee Insight
+
+</h4>
+
+<p id="insightText">
+
+Enter your details and calculate your investment.
+
+</p>
+
+</div>
+
+<div class="chart-card">
+
+<canvas id="fdChart"></canvas>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================================= -->
+<!-- COMPARISON TABLE -->
+<!-- ================================= -->
+
+<section class="table-section">
+
+<h2>
+
+Investment Comparison
+
+</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+
+Metric
+
+</th>
+
+<th>
+
+Fixed Deposit
+
+</th>
+
+<th>
+
+Savings Account (3%)
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+
+Final Value
+
+</td>
+
+<td id="tableFD">
+
+—
+
+</td>
+
+<td id="tableSavings">
+
+—
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Interest Earned
+
+</td>
+
+<td id="tableInterest">
+
+—
+
+</td>
+
+<td id="tableSavingsInterest">
+
+—
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Real Purchasing Power
+
+</td>
+
+<td id="tableReal">
+
+—
+
+</td>
+
+<td>
+
+—
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="tb-footer">
+
+<div class="tb-footer-content">
+
+<h3>
+
+Torque<span>Bytee</span>
+
+</h3>
+
+<p>
+
+Professional financial planning tools designed to help everyone make smarter investment decisions.
+
+</p>
+
+<div class="tb-footer-links">
+
+<a href="../../index.html">
+
+Finance Hub
+
+</a>
+
+<a href="#">
+
+Privacy
+
+</a>
+
+<a href="#">
+
+Disclaimer
+
+</a>
+
+<a href="#">
+
+About
+
+</a>
+
+</div>
+
+<p class="tb-disclaimer">
+
+Calculations are estimates only and should not be considered financial advice.
+
+</p>
+
+<p class="tb-copyright">
+
+© 2026 TorqueBytee • Designed & Developed by Shareyar
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
